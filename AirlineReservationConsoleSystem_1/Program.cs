@@ -43,7 +43,7 @@
                 string input = Console.ReadLine();
                 try
                 {
-                    option = int.Parse(input);// Attempt to parse the input
+                    option = int.Parse(input);
                     isValid = true; // If parsing is successful, set isValid to true
                 }
                 catch (FormatException)
