@@ -18,7 +18,7 @@
 
         //                                =====================Startup & Navigation=============
 
-        // 1. display welcome message method.....
+        // 1. display welcome message method....
         public static void DisplayWelcomeMessage()
         {
             Console.WriteLine("Welcome to Airline Reservation System");
