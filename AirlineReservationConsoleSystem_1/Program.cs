@@ -51,7 +51,7 @@
                     Console.WriteLine("Invalid input. Please enter a number between 0 and 5.");
                     Console.WriteLine("Press any key to continue...");
                     Console.ReadKey(); 
-                    isValid = false; // Keep isValid false to repeat the loop
+                    isValid = false;
                 }
             } while (!isValid); // Continue looping until valid input is received
 
