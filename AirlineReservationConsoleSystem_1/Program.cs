@@ -31,7 +31,7 @@
             {
                 
                 Console.Clear();
-                //Print the menu lists
+                
                 Console.WriteLine("Airline Reservation System");
                 Console.WriteLine("1. Add Flight");
                 Console.WriteLine("2. Display All Flights");
