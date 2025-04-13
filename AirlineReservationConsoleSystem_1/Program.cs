@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-         
+
         static int Max_Flight = 3;
         static int FlightCounter = 0;
         static string[] flightCode_A = new string[Max_Flight];
@@ -13,7 +13,7 @@
         static int[] SeatsNum_A = new int[Max_Flight];
         static int[] SeatReserved_A = new int[Max_Flight];
 
-        
+
         static bool isValid = false;
 
         //                                =====================Startup & Navigation=============
@@ -29,9 +29,9 @@
             int option = 0;
             do
             {
-                
+
                 Console.Clear();
-                
+
                 Console.WriteLine("Airline Reservation System");
                 Console.WriteLine("1. Add Flight");
                 Console.WriteLine("2. Display All Flights");
@@ -44,16 +44,16 @@
                 try
                 {
                     option = int.Parse(input);
-                    isValid = true; 
+                    isValid = true;
                 }
                 catch (FormatException)
                 {
                     Console.WriteLine("Invalid input. Please enter a number between 0 and 5.");
                     Console.WriteLine("Press any key to continue...");
-                    Console.ReadKey(); 
+                    Console.ReadKey();
                     isValid = false;
                 }
-            } while (!isValid); // Continue looping until valid input is received
+            } while (!isValid);
 
             return option;
         }
@@ -63,12 +63,38 @@
         {
             Console.WriteLine("Thanks! Have Happy Day!");
         }
+
+
+
+        // 4. Add Flight method
+
+        public static void AddFlight(string flightCode, string fromCity, string toCity, DateTime departureTime, int duration, int SeatsNum)
+        {
+            if (FlightCounter < Max_Flight)
+            {
+                flightCode_A[FlightCounter] = flightCode;
+                fromCity_A[FlightCounter] = fromCity;
+                toCity_A[FlightCounter] = toCity;
+                departureTime_A[FlightCounter] = departureTime;
+                duration_A[FlightCounter] = duration;
+                SeatsNum_A[FlightCounter] = SeatsNum;
+                SeatReserved_A[FlightCounter] = 0;
+                FlightCounter++;
+                Console.WriteLine("Flight added successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Cannot add more flights. Maximum limit reached.");
+            }
+
+
+
+        }
+
+
+
+
+
     }
 
-
-
-
-
-
-    
 }
