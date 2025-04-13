@@ -44,7 +44,7 @@
                 try
                 {
                     option = int.Parse(input);
-                    isValid = true; // If parsing is successful, set isValid to true
+                    isValid = true; 
                 }
                 catch (FormatException)
                 {
