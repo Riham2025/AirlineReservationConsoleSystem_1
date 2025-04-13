@@ -13,7 +13,7 @@
         static int[] SeatsNum_A = new int[Max_Flight];
         static int[] SeatReserved_A = new int[Max_Flight];
 
-        // flag to validate the user input 
+        
         static bool isValid = false;
 
         //                                =====================Startup & Navigation=============
