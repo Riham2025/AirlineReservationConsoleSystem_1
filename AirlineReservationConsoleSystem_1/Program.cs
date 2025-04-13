@@ -53,7 +53,7 @@
                     Console.ReadKey(); 
                     isValid = false;
                 }
-            } while (!isValid); 
+            } while (!isValid); // Continue looping until valid input is received
 
             return option;
         }
