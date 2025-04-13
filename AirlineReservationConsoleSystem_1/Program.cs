@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-           // global variables and arraies for flight ....... 
+         
         static int Max_Flight = 3;
         static int FlightCounter = 0;
         static string[] flightCode_A = new string[Max_Flight];
