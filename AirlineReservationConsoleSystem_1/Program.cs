@@ -29,7 +29,7 @@
             int option = 0;
             do
             {
-                // Just to clear the screen
+                
                 Console.Clear();
                 //Print the menu lists
                 Console.WriteLine("Airline Reservation System");
