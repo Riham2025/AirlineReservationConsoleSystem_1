@@ -1,4 +1,7 @@
-﻿namespace AirlineReservationConsoleSystem_1
+﻿using System;
+using System.Diagnostics;
+
+namespace AirlineReservationConsoleSystem_1
 {
     internal class Program
     {
@@ -11,6 +14,8 @@
         static string[] toCity_A = new string[Max_Flight];
         static DateTime[] departureTime_A = new DateTime[Max_Flight];
         static int[] duration_A = new int[Max_Flight];
+        static int[] recerved_char = new int[Max_Flight];
+        static int[] char_available = new int[Max_Flight];
 
         // flag to validate the user input 
         static bool isValid = true;
@@ -36,9 +41,9 @@
         }
 
         // 2. show main menu method
-        public static void  ShowMainMenu()
+        public static int  ShowMainMenu()
         {
-
+            Console.Clear();// Just to clear the screen
             Console.WriteLine("Airline Reservation System");
             Console.WriteLine("1. Add Flight");
             Console.WriteLine("2. Display All Flights");
@@ -52,42 +57,28 @@
             Console.WriteLine("10. Calculate Fare");
             Console.WriteLine("0. Exit");
             Console.WriteLine("Enter the option: ");
-            //string input = Console.ReadLine();
-            //int choice = 0;
-            //do
-            //{
-            //    // Just to clear the screen
-            //    Console.Clear();
-            //    //Print the menu lists
-            //    //Console.WriteLine("Airline Reservation System");
-            //    //Console.WriteLine("1. Add Flight");
-            //    //Console.WriteLine("2. Display All Flights");
-            //    //Console.WriteLine("3. Find Flight By Code");
-            //    //Console.WriteLine("4. Update Flight Departure");
-            //    //Console.WriteLine("5. Cancel Flight Booking");
-            //    //Console.WriteLine("6. Book Flight");
-            //    //Console.WriteLine("7. Validate Flight Code");
-            //    //Console.WriteLine("8. Display Flight Details");
-            //    //Console.WriteLine("9.Search Bookings By Destination");
-            //    //Console.WriteLine("10. Calculate Fare");
-            //    //Console.WriteLine("0. Exit");
-            //    //Console.WriteLine("Enter the option: ");
-            //    //string input = Console.ReadLine();
-            //    try
-            //    {
-            //        choice = int.Parse(input);// Attempt to parse the input
-            //        isValid = true; // Set to true if parsing is successful
-            //    }
-            //    catch (FormatException)
-            //    {
-            //        Console.WriteLine("Invalid input. Please enter a number.");
-            //        Console.WriteLine("Press any key to continue...");
-            //        Console.ReadKey();// Wait for user to acknowledge the message
-            //        isValid = false; // Keep isValid false to repeat the loop
+            string input = Console.ReadLine();
+            int choice = 0;
+            do
+            {
+                
+                
+                
+                try
+                {
+                    choice = int.Parse(input);// Attempt to parse the input
+                    isValid = true; // Set to true if parsing is successful
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();// Wait for user to acknowledge the message
+                    isValid = false; // Keep isValid false to repeat the loop
 
-            //    }
-            //} while (!isValid); // Repeat until a valid choice is made
-            //return choice;
+                }
+            } while (!isValid); // Repeat until a valid choice is made
+            return choice;
 
         }
 
@@ -111,8 +102,77 @@
 
         }
 
+        //5. Display All Flights
 
+        public static void DisplayAllFlights()
+        {
+            // Loop through all flights
+            for (int i = 0;  i < FlightCounter; i++ )
+            {
+                Console.WriteLine("fligh tCode : " + flightCode_A[i]);
+                Console.WriteLine("from City : " + fromCity_A[i]);
+                Console.WriteLine("to City : " + toCity_A[i]);
+                Console.WriteLine("departure Time : " + departureTime_A[i]);
+                Console.WriteLine("duration : " + duration_A[i]);
 
+               
+
+            }
+
+        }
+
+        // 6. Find Flight By Code
+
+        public static bool FindFlightByCode(string code)
+        {
+
+            int index = 0;
+            bool isFound = false;
+            for (int i=0; i< FlightCounter; i++  )
+            {
+                if (flightCode_A[i] == code)
+                {
+                    isFound = true;
+                    index = i;
+                    break;
+                }
+                //else
+                //{
+                //    isFound = false;
+                //}
+            }
+            if (isFound)
+            {
+                Console.WriteLine("flight Code : " + flightCode_A[index]);
+                Console.WriteLine("from City : " + fromCity_A[index]);
+                Console.WriteLine("to City : " + toCity_A[index]);
+                Console.WriteLine("departure Time : " + departureTime_A[index]);
+                Console.WriteLine("duration : " + duration_A[index]);
+            }
+            else
+            {
+                Console.WriteLine("not found");
+            }
+
+            return false;
+
+        }
+
+        //7. Update Flight Departure(ref DateTime departure) 
+
+        public static void UpdateFlightDeparture(ref DateTime departure)
+        {
+            Console.WriteLine("Enter the flight Code ");
+            string flightCode_user = Console.ReadLine();
+
+            for (int i = 0; i < FlightCounter; i++)
+            {
+                if (flightCode_user == flightCode_A[i])
+                {
+                    departureTime_A[i] = departure;
+                }
+            }
+        }
 
 
 
@@ -132,31 +192,79 @@
             Console.ReadLine();
 
             // calling ShowMainMenu() function
-            ShowMainMenu();
+            
+            while (true)
+                { 
+            int chiose = ShowMainMenu();
+
+                switch (chiose)
+                {
+                    case 1:
+                        // Add Flightfuncation
+                        Console.WriteLine("Enter the  flight Code");
+                        string flightCode_userInout = Console.ReadLine();
+
+                        Console.WriteLine("Enter the  from city");
+                        string fromCity_userInout = Console.ReadLine();
+
+                        Console.WriteLine("Enter the  to city");
+                        string toCity_userInout = Console.ReadLine();
 
 
-            // Add Flightfuncation
-            Console.WriteLine("Enter the  flight Code");
-            string flightCode_userInout = Console.ReadLine();
-
-            Console.WriteLine("Enter the  from city");
-            string fromCity_userInout = Console.ReadLine();
-
-            Console.WriteLine("Enter the  to city");
-            string toCity_userInout = Console.ReadLine();
+                        Console.WriteLine("Enter the  date and time :2025-07-08 12:30");
+                        DateTime departureTime_userInout = DateTime.Parse(Console.ReadLine());
 
 
-            Console.WriteLine("Enter the  date and time");
-            DateTime departureTime_userInout = DateTime.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter the  date and time");
-            int duration_userInout = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter the  duraion");
+                        int duration_userInout = int.Parse(Console.ReadLine());
 
 
 
-            AddFlight(flightCode: flightCode_userInout, fromCity: fromCity_userInout, toCity: toCity_userInout, departureTime: departureTime_userInout, duration: duration_userInout);
+                        AddFlight(flightCode: flightCode_userInout, fromCity: fromCity_userInout, toCity: toCity_userInout, departureTime: departureTime_userInout, duration: duration_userInout);
 
-  
+                        break;
+
+
+                    case 2: //Display All Flights
+
+                        DisplayAllFlights();
+                        Console.ReadLine();
+                        break;
+
+                    case 3: //FindFlightByCode(string code)
+                        Console.WriteLine("Enter the  flight Code : ");
+                        string flightCode_B = Console.ReadLine();
+
+                        FindFlightByCode(flightCode_B);
+
+                        Console.ReadLine();
+
+                        break;
+
+                    case 4: // Update Flight Departure(ref DateTime departure)
+                        Console.WriteLine("Enter the new update Time");
+                        DateTime new_dataTime = DateTime.Parse(Console.ReadLine());
+                        UpdateFlightDeparture(ref new_dataTime);
+                        Console.ReadLine();
+
+                        break;
+
+                }
+                    
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
         }
         static void Main(string[] args)
         {
