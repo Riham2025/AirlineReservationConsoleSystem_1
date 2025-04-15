@@ -102,11 +102,11 @@ namespace AirlineReservationConsoleSystem_1
 
         }
 
-        //5. Display All Flights
+        //5. Display All Flights..
 
         public static void DisplayAllFlights()
         {
-            // Loop through all flights
+            // Loop through all flights.
             for (int i = 0;  i < FlightCounter; i++ )
             {
                 Console.WriteLine("fligh tCode : " + flightCode_A[i]);
