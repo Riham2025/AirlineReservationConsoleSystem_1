@@ -174,10 +174,16 @@ namespace AirlineReservationConsoleSystem_1
             }
         }
 
+        //8. Book Flight(string passengerName, string flightCode = "Default001")  
+        public static void BookFlight(string passengerName, string flightCode = "Default001")
+        {
+
+            passengerName_A[BookingCounter] = passengerName;
+            BookingFlightCode_A[BookingCounter] = flightCode;
+            BookingCounter++;
 
 
-
-
+        }
 
 
 
@@ -246,6 +252,23 @@ namespace AirlineReservationConsoleSystem_1
                         DateTime new_dataTime = DateTime.Parse(Console.ReadLine());
                         UpdateFlightDeparture(ref new_dataTime);
                         Console.ReadLine();
+
+                        break;
+
+                    case 5:
+
+                        break;
+                    case 6:
+                        Console.WriteLine("Enter the passenger Name");
+                        string passengerName_A = Console.ReadLine();
+
+                        Console.WriteLine("Enter the Booking Flight Code");
+                        string BookingFlightCode_A = Console.ReadLine();
+
+
+                        BookFlight(passengerName: passengerName_A, flightCode: BookingFlightCode_A); 
+                        
+
 
                         break;
 
